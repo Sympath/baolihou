@@ -1,0 +1,29 @@
+/* Preflights are needed for default values of variables */
+@unocss preflights;
+
+.title {
+  text-align: center;
+  margin-bottom: 10px;
+}
+.body {
+  display: flex;
+  max-width: 190px;
+}
+.count {
+  @apply text-orange-500;
+}
+
+.plus1 {
+  @apply float-right;
+  color: aqua;
+  margin-left: 10px;
+}
+.mockApiList {
+  display: flex;
+  flex-direction: column;
+}
+.mockApiItem {
+  overflow: scroll;
+  word-break: normal;
+  max-width: 190px;
+}
