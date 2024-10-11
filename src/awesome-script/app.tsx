@@ -12,7 +12,13 @@ const ssrmockId = getCookie(MOCKCOOKIEKEY);
 function Counter() {
   const [getMockApis, setMockApis] = createSignal([]);
   test((data = []) => {
-    setMockApis([...getMockApis(), ...data]);
+    setMockApis(
+      Array.from(
+        new Map(
+          [...getMockApis(), ...data].map((item) => [item.id, item]),
+        ).values(),
+      ),
+    );
   });
   const matchedContentDom = (
     <div class={styles.mockApiList}>
