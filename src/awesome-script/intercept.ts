@@ -8,12 +8,12 @@ import { MOCKCOOKIEKEY, MOCKINFOCOOKIEKEY } from './utils/constance';
 // const MessageToInjectedScript = 'MessageToInjectedScript';
 // const MessageToContentScript = 'MessageToContentScript';
 // const storageKey = 'fs-mock';
-const browserMockFlagKey = 'browserMockFlag';
+// const browserMockFlagKey = 'browserMockFlag';
 let mockUrl = `https://snapshot.alibaba-inc.com/api/public/request/interceptor`;
 const xhrMockFailAPI = 'xhr-mock-fail-api';
-const browserMockFlag =
-  localStorage.getItem(browserMockFlagKey) === 'false' ? false : true;
-// let browserMockFlag = true
+// const browserMockFlag =
+//   localStorage.getItem(browserMockFlagKey) === 'false' ? false : true;
+const browserMockFlag = true;
 
 // 根据配置信息 设置当前状态
 function handleMockInfo(ssrmockInfo) {
@@ -130,7 +130,7 @@ const ssrmockId = getCookie(MOCKCOOKIEKEY);
 // 信息对象
 const ssrmockInfo = getCookie(MOCKINFOCOOKIEKEY);
 if (ssrmockInfo) {
-  handleMockInfo(ssrmockInfo);
+  handleMockInfo(JSON.parse(ssrmockInfo));
 }
 
 export default (setMockApis) => {
@@ -193,6 +193,7 @@ export default (setMockApis) => {
       let response;
       try {
         // 2. 判断是否需要mock: 在目标接口中才进行mock
+
         const { requestUrl, requestBody, headers } = parseWrap(methodParams);
         const { api } = parse(requestUrl, requestBody);
         if (browserMockFlag) {

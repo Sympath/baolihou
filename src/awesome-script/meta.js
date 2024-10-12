@@ -9,6 +9,7 @@
 // @require     https://cdn.jsdelivr.net/npm/@violentmonkey/dom@2
 // @require     https://cdn.jsdelivr.net/npm/@violentmonkey/ui@0.7
 // @require     https://cdn.jsdelivr.net/npm/@violentmonkey/dom@2/dist/solid.min.js
+// @downloadURL https://code.alibaba-inc.com/rxpi/snapshot-mock-extension/raw/main/dist/awesome-script.user.js
 // ==/UserScript==
 
 /**
