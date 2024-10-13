@@ -12,13 +12,22 @@ const ssrmockId = getCookie(MOCKCOOKIEKEY);
 function Counter() {
   const [getMockApis, setMockApis] = createSignal([]);
   test((data = []) => {
-    setMockApis(
-      Array.from(
-        new Map(
-          [...getMockApis(), ...data].map((item) => [item.id, item]),
-        ).values(),
-      ),
-    );
+    setMockApis((pre) => {
+      const newResultMap = new Map(pre.map((item) => [item.api, item]));
+      // 遍历 data 数组
+      for (const dataItem of data) {
+        if (newResultMap.has(dataItem.api)) {
+          // 如果存在，更新 succeed 属性
+          newResultMap.get(dataItem.api).succeed = dataItem.succeed;
+        } else {
+          // 如果不存在，添加新的项
+          newResultMap.set(dataItem.api, dataItem);
+        }
+      }
+      // 将 Map 转回数组
+      const newResult = Array.from(newResultMap.values());
+      return newResult;
+    });
   });
   const matchedContentDom = (
     <div class={styles.mockApiList}>
