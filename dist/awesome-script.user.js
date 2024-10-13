@@ -61,7 +61,7 @@ let mockUrl = `https://snapshot.alibaba-inc.com/api/public/request/interceptor`;
 const xhrMockFailAPI = 'xhr-mock-fail-api';
 // const browserMockFlag =
 //   localStorage.getItem(browserMockFlagKey) === 'false' ? false : true;
-let browserMockFlag = true;
+const browserMockFlag = true;
 
 // 根据配置信息 设置当前状态
 function handleMockInfo(ssrmockInfo) {
